@@ -1,10 +1,10 @@
 figure
 rand('seed', 0)
 cmap = colormap('lines');
-[X, index] = randomnetwork(100, 19);
+[X, index, previous] = randomnetwork(100, 30);
 N = size(X, 2);
 f = true(1, N);
-plotnetwork(gca, X, f, index, unique(index), cmap)
+plotnetwork(gca, X, f, index, unique(index), previous, cmap)
 
 %%rand('seed', 5)
 %%P = X(:, floor(rand*(N - 1)) + 1);

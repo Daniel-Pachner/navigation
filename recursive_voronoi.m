@@ -7,7 +7,7 @@ function id = recursive_voronoi(X, index, P)
     select = unique(round(linspace(1, N, 10)));
 
 
-    for it = 1 : 6
+    for it = 1 : 15
         disp([sum(f), min(index(f)), max(index(f))])
 
         V = find_voronoi(X(:, select), index(select));
@@ -28,10 +28,10 @@ function id = recursive_voronoi(X, index, P)
         C = colormap('lines');
         ax = gca;
         hold(ax, 'on');
-        plot_voronoi(V, m, M, 0);
+        plot_voronoi(V, m, M, 2);
         plotnetwork(gca, X, f, index, indices, C);
         markgnss(P);
-        plot(S(1, :), S(2, :), 'k', 'linewidth', 1);
+        patch(S(1, :), S(2, :), 'facecolor', [1, 0, 0], 'facealpha', 0.15);
         title(sprintf('step %d', it));
         print(fig, sprintf('voronoi_%d.svg', it))
 

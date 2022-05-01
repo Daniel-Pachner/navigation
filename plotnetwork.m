@@ -1,15 +1,16 @@
-function plotnetwork(hxa, X, f, index, indices, cmap)
+function plotnetwork(hxa, X, f, index, indices, previous, cmap)
     hold(hxa, 'on');
-    C = colormap('lines');
+    cmap = colormap('lines');
     for i = indices
-        plot(hxa, X(1, f & index == i), X(2, f & index == i), ...
-        '-', 'color', cmap(i, :), 'linewidth', 2);
+        idx = f & index == i;
+        plot(hxa, X(1, idx), X(2, idx), ...
+        '.', 'color', cmap(i, :), 'linewidth', 1);
     end
     for i = indices
         k = find(f & index == i, 1, 'last');
         if ~isempty(k)
             text(mean(X(1, k)), mean(X(2, k)), sprintf('Line %d', i), ...
-            'backgroundcolor', C(i, :), 'FontName', 'CourierNew');
+            'backgroundcolor', cmap(i, :)*0.6 + 0.4, 'FontName', 'CourierNew');
         end
     end
     axis equal
