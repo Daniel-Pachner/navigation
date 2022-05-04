@@ -11,7 +11,7 @@ V = find_voronoi(x(:, 1:12), index(1:12));
 subplot(1, 2, 1)
 plot_voronoi(V, m, M, 2);
 markgnss(P);
-plot(x(1, :), x(2, :), 'k.');
+
 [A, b] = neighbors(x(:, 1:12), factor = 0.99);
 [~, ~, h] = evaluate_voronoi(V, P);
 [S, A, b] = plotcon(A(:, :, h), b(:, h), min(x(:, 1:12), [], 2)-0.5, max(x(:, 1:12), [], 2)+0.5);
@@ -25,9 +25,7 @@ subplot(1, 2, 2)
 f  = filter_points(x, A, b);
 V = find_voronoi(x(:, f), index(f));
 plot_voronoi(V, m, M, 2);
-plot(x(1, :), x(2, :), 'k.');
 markgnss(P);
-plot(x(1, :), x(2, :), 'k.');
 [~, ~, h] = evaluate_voronoi(V, P);
 plot(V(h).x(1), V(h).x(2), 'go')
 

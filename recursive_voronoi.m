@@ -21,8 +21,7 @@ function id = recursive_voronoi(X, index, P)
         M = M + d;
 
         [~, ~, h] = evaluate_voronoi(V, P);
-        [A, b] = neighbors(X(:, select), factor = 0.99);
-        [S, A, b] = plotcon(A(:, :, h), b(:, h), m, M);
+        S = plotcon(V(h).F, V(h).g, m, M);
 
         fig = figure;
         C = colormap('lines');
@@ -35,7 +34,7 @@ function id = recursive_voronoi(X, index, P)
         title(sprintf('step %d', it));
         print(fig, sprintf('voronoi_%d.svg', it))
 
-        f  = f & filter_points(X, A, b);
+        f  = f & filter_points(X, V(h).F, V(h).g);
         select = find(f);
         while numel(select) > 10
             select = select(1 : 2 : end);
