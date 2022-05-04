@@ -40,7 +40,7 @@ while conti
 end
 
 t = zeros(1, n);
-e = zeros(1, n)
+e = zeros(1, n);
 for i = 1 : size(x, 2)
     x_gnss = x(:, i) + 0e-5*(2*rand(2, 1)-1);
     tic;

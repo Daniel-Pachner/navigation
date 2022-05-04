@@ -1,17 +1,13 @@
 figure
 rand('seed', 0)
 cmap = colormap('lines');
-[X, index, previous] = randomnetwork(100, 30);
-N = size(X, 2);
+[x, index, previous] = randomnetwork(50, 4);
+N = size(x, 2);
 f = true(1, N);
-plotnetwork(gca, X, f, index, unique(index), previous, cmap)
+plotnetwork(gca, x, f, index, cmap)
+axis equal
 
-%%rand('seed', 5)
-%%P = X(:, floor(rand*(N - 1)) + 1);
-%%P = P + (2*rand(2, 1) - 1)*0.1;
-%%P = [-.13; .19];
-
-P = [0; -.18];
+P = [0.82; -.8];
 markgnss(P);
 
 print(1, 'tramnetwork.svg')

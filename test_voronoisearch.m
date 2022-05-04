@@ -1,9 +1,8 @@
 rand('seed', 0);
 
 P = [0.3; 0.6];
-
-
 x = rand(2, 50);
+
 V = find_voronoi(x);
 plot_voronoi(V, [], [], 1);
 
